@@ -6,6 +6,10 @@ const {
     readInput 
 } = require('./helpers/inquirer');
 
+const {
+    saveToDB
+} = require('./helpers/saveData');
+
 const Tasks = require('./models/tasks');
 
 
@@ -29,6 +33,8 @@ const main = async () => {
                 console.log(tasks.listToArr);
                 break;
         }
+
+        saveToDB(tasks.listToArr);
 
         await pause();
     } while (opt !== '0')
