@@ -9,39 +9,39 @@ const questions = [
         choices: [
             {
                 value: '1',
-                name: '1. Add task',
+                name: `${'1.'.green} Add task`,
             },
             {
                 value: '2',
-                name: '2. Show task',
+                name: `${'2.'.green} Show task`,
             },
             {
                 value: '3',
-                name: '3. Show completed task',
+                name: `${'3.'.green} Show completed task`,
             },
             {
                 value: '4',
-                name: '4. Show pending task',
+                name: `${'4.'.green} Show pending task`,
             },
             {
                 value: '5',
-                name: '5. Complete task',
+                name: `${'5.'.green} Complete task`,
             },
             {
                 value: '6',
-                name: '6. Delete task',
+                name: `${'6.'.green} Delete task`,
             },
             {
                 value: '0',
-                name: '0. Exit',
+                name: `${'0'.brightYellow} Exit`,
             },
         ]
     }
 ]
 const inquirerMenu = async () => {
-    console.log('===================='.green);
-    console.log('  Select an option'.magenta);
-    console.log('====================\n'.green);
+    console.log('===================='.magenta);
+    console.log('  Select an option'.white);
+    console.log('====================\n'.magenta);
     
     const { options } = await inquirer.prompt(questions)
     return options;

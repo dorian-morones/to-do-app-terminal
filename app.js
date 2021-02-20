@@ -5,6 +5,7 @@ const {
     pause, 
     readInput 
 } = require('./helpers/inquirer');
+
 const Tasks = require('./models/tasks');
 
 
@@ -14,6 +15,7 @@ const main = async () => {
     const tasks = new Tasks();
 
     do {
+        // Menu
         opt = await inquirerMenu();
 
         switch (opt) {
@@ -24,7 +26,7 @@ const main = async () => {
 
                 break;
             case '2':
-                console.log(tasks._list);
+                console.log(tasks.listToArr);
                 break;
         }
 
