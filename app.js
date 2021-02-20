@@ -1,9 +1,11 @@
 require('colors');
 
-const { 
-    inquirerMenu, 
-    pause, 
-    readInput 
+const {
+    inquirerMenu,
+    pause,
+    readInput,
+    listTaskToDelete,
+    confirm
 } = require('./helpers/inquirer');
 
 const {
@@ -19,7 +21,7 @@ const main = async () => {
     const tasks = new Tasks();
     const dbList = readDb();
 
-    if( dbList ){
+    if (dbList) {
         tasks.getTaskFromArr(dbList)
     };
 
@@ -37,6 +39,22 @@ const main = async () => {
                 break;
             case '2':
                 tasks.fullTaskListUI();
+                break;
+            case '3':
+                tasks.completedTaskListUI();
+                break;
+            case '4':
+                tasks.pendingTaskListUI();
+                break;
+            case '6':
+                const id = await listTaskToDelete(tasks.listToArr);
+                if (id === 0) {
+                    const ok = await confirm('Please confirm the delete');
+                    if (ok) {
+                        tasks.deleteTask(id);
+                        console.log(`deleted`.red)
+                    }
+                }
                 break;
         }
 
