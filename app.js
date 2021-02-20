@@ -7,8 +7,8 @@ const {
 } = require('./helpers/inquirer');
 
 const {
-    saveToDB
-} = require('./helpers/saveData');
+    saveToDB, readDb
+} = require('./helpers/dbInteractions');
 
 const Tasks = require('./models/tasks');
 
@@ -17,6 +17,12 @@ const main = async () => {
 
     let opt = '';
     const tasks = new Tasks();
+    const dbList = readDb();
+
+    if( dbList ){
+        tasks.getTaskFromArr(dbList)
+    };
+
 
     do {
         // Menu
@@ -30,13 +36,13 @@ const main = async () => {
 
                 break;
             case '2':
-                console.log(tasks.listToArr);
+                tasks.fullTaskListUI();
                 break;
         }
 
         saveToDB(tasks.listToArr);
-
         await pause();
+
     } while (opt !== '0')
 
 
