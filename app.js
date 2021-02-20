@@ -5,7 +5,8 @@ const {
     pause,
     readInput,
     listTaskToDelete,
-    confirm
+    confirm,
+    listTaskToUpdate
 } = require('./helpers/inquirer');
 
 const {
@@ -45,6 +46,10 @@ const main = async () => {
                 break;
             case '4':
                 tasks.pendingTaskListUI();
+                break;
+            case '5':
+                const ids = await listTaskToUpdate(listToArr);;
+                tasks.updateTaks(ids);
                 break;
             case '6':
                 const id = await listTaskToDelete(tasks.listToArr);

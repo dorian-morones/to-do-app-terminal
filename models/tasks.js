@@ -62,6 +62,22 @@ class Tasks {
             delete this._list[id];
         }
     }
+
+    updateTaks(ids){
+        ids.forEach( id => {
+            const task = this._list[id];
+            if( !task.completed_at ){
+                task.completed_at = new Date().toISOString();
+            }
+        });
+
+        this.listToArr.forEach( item => {
+            if(!ids.includes(item.id)){
+                const task = this._list[item.id]
+                task.completed_at = null;
+            }
+        })
+    }
 }
 
 module.exports = Tasks;
