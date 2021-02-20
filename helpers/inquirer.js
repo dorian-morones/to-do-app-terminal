@@ -47,6 +47,26 @@ const inquirerMenu = async () => {
     return options;
 }
 
+const readInput = async(message) => {
+    const question = [
+        {
+            type: 'input',
+            name: 'desc',
+            message: message,
+            valdiate(value){
+                if(value.length === 0){
+                    'This value is required'
+                }
+                return true;
+            }
+        }
+    ]
+
+    const { desc } = await inquirer.prompt(question);
+    return desc;
+
+};
+
 const pause =  async() => {
     const question = [
         {
@@ -60,5 +80,6 @@ const pause =  async() => {
 
 module.exports = {
     inquirerMenu,
-    pause
+    pause,
+    readInput
 }

@@ -19,6 +19,7 @@
   "homepage": "https://github.com/dorian-morones/to-do-app-terminal#readme",
   "dependencies": {
     "colors": "^1.4.0",
-    "inquirer": "^7.3.3"
+    "inquirer": "^7.3.3",
+    "uuid": "^8.3.2"
   }
 }
